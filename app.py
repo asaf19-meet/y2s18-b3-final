@@ -12,6 +12,14 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
+@app.route('/tutor/log_in')
+def log_in():
+    return render_template('log_in.html')
+    
+@app.route('/student/log_in')
+def log_in():
+	return render_template('log_in.html')
+
 @app.route('/tutor')
 def tutor():
     return render_template('tutor_page.html')
@@ -31,6 +39,8 @@ def subjects_page():
 @app.route('/student/subjects_page/tutor_option')
 def tutor_option():
     return render_template('tutor_option_page.html')
+
+
 
 # Running the Flask app
 if __name__ == "__main__":

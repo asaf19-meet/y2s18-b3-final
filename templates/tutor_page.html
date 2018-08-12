@@ -7,8 +7,12 @@
 
     <body>
        <!-- log in  -->
-       <h1>  sign up </h1>
-       <h1> already have an account? sign in </h1>
+       <button href="{{url_for('sign_up')}}">  sign up </button>
+       <h1> already have an account? </h1>
+       <br>
+       <button href="{{url_for('log_in')}}">log in</button>
+       <p><a href="{{url_for('student_request')}}">student that requested you</a></p>
        <p><a href="{{url_for('home')}}">Home</a></p>
+
     </body>
 </html>
