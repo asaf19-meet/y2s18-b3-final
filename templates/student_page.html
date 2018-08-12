@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>tutor page </title>
+        <title>student page</title>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     </head>
 
     <body>
-       <!-- log in  -->
-       <button href="{{url_for('sign_up')}}">  sign up </button>
-       <h1> already have an account? </h1>
-       <br>
+        <!-- log in  -->
+       <h1>  sign up </h1>
+       <h1> already have an account? sign in </h1>
        <button href="{{url_for('log_in')}}">log in</button>
-       <p><a href="{{url_for('student_request')}}">student that requested you</a></p>
        <p><a href="{{url_for('home')}}">Home</a></p>
-
     </body>
 </html>
