@@ -2,7 +2,7 @@
 from flask import Flask, render_template, url_for, redirect, request, session, flash
 
 # Add functions you need from databases.py to the next line!
-from databases import add_student, get_tutor_by_username, auth_student, get_student_by_username, auth_tutor
+from databases import add_student, get_tutor_by_username, auth_student, get_student_by_username, auth_tutor, add_tutor
 
 # Starting the flask app
 app = Flask(__name__)
@@ -32,9 +32,9 @@ def student_login():
             return redirect(url_for('home'))
         else:
             print("wrong")
-            return render_template("log_in.html", error="Bad login")
+            return render_template("student_login.html", error="Bad login")
     else:
-        return render_template("log_in.html")
+        return render_template("student_login.html")
  
 @app.route("/student/logout")
 def student_logout():
@@ -55,14 +55,47 @@ def tutor_login():
             return redirect(url_for('home'))
         else:
             print("wrong")
-            return render_template("tutor.html", error="Bad login")
+            return render_template("tutor_login.html", error="Bad login")
     else:
-        return render_template("tutor.html")
+        return render_template("tutor_login.html")
  
 @app.route("/tutor/logout")
 def tutor_logout():
     session['logged_in'] = False
     return home()
+
+@app.route("/student/signup", methods=['GET', 'POST'])
+def student_signup():
+    if request.method == 'GET':
+        return render_template('student_signup.html')
+    else:
+        username = request.form['username']
+        password = request.form['password']
+        name = request.form['name']
+        location = request.form['location']
+        grade = request.form['grade']
+        add_student(username,password,name,location,grade)
+        return render_template('student_signup.html')
+    
+
+@app.route("/tutor/signup", methods=['GET', 'POST'])
+def tutor_signup():
+    if request.method == 'GET':
+        return render_template('tutor_signup.html')
+    else:
+        username = request.form['username']
+        password = request.form['password']
+        name = request.form['name']
+        location = request.form['location']
+        experience = request.form['experience']
+        degree = request.form['degree']        
+        add_tutor(username,password,name,location,experience,degree)
+        return render_template('tutor_signup.html')
+
+
+
+
+
 
 # Running the Flask app
 if __name__ == "__main__":
