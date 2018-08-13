@@ -48,7 +48,7 @@ def get_student_by_username(username):
     student = session.query(Student).filter_by(username= username).first()
     return student
 
-def add_tutor(tutor_username, tutor_name, tutor_password, tutor_location, tutor_experience, tutor_degree):
+def add_tutor(tutor_username, tutor_password, tutor_name, tutor_location, tutor_experience, tutor_degree):
     print("Added a tutor!")
     session = DBSession()
     tutor = Tutor(username = tutor_username, name = tutor_name, password = tutor_password, location = tutor_location, experience = tutor_experience, degree = tutor_degree)
@@ -63,7 +63,6 @@ def add_time(time, subject, tutor_username):
     session.commit()
 
 
-# add_tutor("usernme","Mohammad", "passworddd", "Jerusalem", "10", "Hogwarts")
 # add_student("asi", "123456","asafi", "Nazareth", "10th")
 # add_time("friday", "CS", "usernme")
 
