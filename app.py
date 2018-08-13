@@ -4,6 +4,7 @@ from flask import Flask, render_template, url_for, redirect, request, session, f
 # Add functions you need from databases.py to the next line!
 from databases import add_student, get_tutor_by_username, auth_student, get_student_by_username, auth_tutor, add_tutor
 
+
 # Starting the flask app
 app = Flask(__name__)
 app.secret_key = "q34we;kHvWEJWE:KVNl"
@@ -16,6 +17,36 @@ def home():
     else:
         user = get_student_by_username(session["username"])
         return render_template("subjects_page.html", student =user )
+
+@app.route('/tutor/log_in')
+def log_in_tutor():
+    return render_template('log_in.html')
+    
+@app.route('/student/log_in')
+def log_in_student():
+	return render_template('log_in.html')
+@app.route('/tutor/sign_up')
+def sign_up_tutor():
+	return render_template('sign_up.html')
+@app.route('/tutor')
+def tutor():
+    return render_template('tutor_page.html')
+
+@app.route('/student')
+def student():
+    return render_template('student_page.html')
+
+@app.route('/tutor/student_request')
+def student_request():
+    return render_template('student_request_page.html')
+
+@app.route('/student/subjects_page')
+def subjects_page():
+    return render_template('subjects_page.html')
+
+@app.route('/student/subjects_page/tutor_option')
+def tutor_option():
+    return render_template('tutor_option_page.html')
 
 
 @app.route('/student/login', methods=['GET', 'POST'])
