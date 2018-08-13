@@ -2,7 +2,7 @@
 from flask import Flask, render_template, url_for, redirect, request, session
 
 # Add functions you need from databases.py to the next line!
-from databases import add_student, get_all_students
+from databases import add_student
 
 # Starting the flask app
 app = Flask(__name__)
@@ -13,13 +13,15 @@ def home():
     return render_template('home.html')
 
 @app.route('/tutor/log_in')
-def log_in():
+def log_in_tutor():
     return render_template('log_in.html')
     
 @app.route('/student/log_in')
-def log_in():
+def log_in_student():
 	return render_template('log_in.html')
-
+@app.route('/tutor/sign_up')
+def sign_up_tutor():
+	return render_template('sign_up.html')
 @app.route('/tutor')
 def tutor():
     return render_template('tutor_page.html')
