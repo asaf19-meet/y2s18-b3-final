@@ -19,6 +19,12 @@ def auth_student(student_username, student_password):
     print(student)
     return student
 
+def auth_tutor(tutor_username, tutor_password):
+    session = DBSession()
+    tutor = session.query(Tutor).filter_by(username = tutor_username, password= tutor_password).first()
+    print(tutor)
+    return tutor
+
 def add_student(student_username, student_password, student_name, student_location, student_grade):
     print("Added a student!")
     session = DBSession()
@@ -61,4 +67,4 @@ def add_time(time, subject, tutor_username):
 # add_student("asi", "123456","asafi", "Nazareth", "10th")
 # add_time("friday", "CS", "usernme")
 
-print(get_tutors())
+# print(get_tutors())

@@ -2,7 +2,8 @@
 from flask import Flask, render_template, url_for, redirect, request, session, flash
 
 # Add functions you need from databases.py to the next line!
-from databases import add_student, get_tutor_by_username, auth_student, get_student_by_username
+from databases import add_student, get_tutor_by_username, auth_student, get_student_by_username, auth_tutor
+
 # Starting the flask app
 app = Flask(__name__)
 app.secret_key = "q34we;kHvWEJWE:KVNl"
@@ -17,7 +18,7 @@ def home():
         return render_template("subjects_page.html", student =user )
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/student/login', methods=['GET', 'POST'])
 def student_login():
     if request.method == 'POST':
         POST_USERNAME = str(request.form['username'])
@@ -35,8 +36,31 @@ def student_login():
     else:
         return render_template("log_in.html")
  
-@app.route("/logout")
-def logout():
+@app.route("/student/logout")
+def student_logout():
+    session['logged_in'] = False
+    return home()
+
+@app.route('/tutor/login', methods=['GET', 'POST'])
+def tutor_login():
+    if request.method == 'POST':
+        POST_USERNAME = str(request.form['username'])
+        POST_PASSWORD = str(request.form['password'])
+        tutor = auth_tutor(POST_USERNAME, POST_PASSWORD)
+        
+        if tutor is not None:
+            session['logged_in'] = True
+            session["username"] = tutor.username
+            print("logged_in")
+            return redirect(url_for('home'))
+        else:
+            print("wrong")
+            return render_template("tutor.html", error="Bad login")
+    else:
+        return render_template("tutor.html")
+ 
+@app.route("/tutor/logout")
+def tutor_logout():
     session['logged_in'] = False
     return home()
 
