@@ -14,9 +14,10 @@ class Student(Base):
     name = Column(String)
     password = Column(String)
     location = Column(String)
+    grade = Column(String)
 
     def __repr__(self):
-        return ("Student name: {}, Student's password: {}, Student's Location:{}".format(self.name, self.password, self.location))
+        return ("Student name: {}, Student's password: {}, Student's Location:{}, Student's grade: {}".format(self.name, self.password, self.location, self.grade))
 
 class Tutor(Base):
     __tablename__ = "Tutors"
@@ -25,8 +26,11 @@ class Tutor(Base):
     password = Column(String)
     location = Column(String)
     times = relationship("Time")
+    experience = Column(String)
+    degree = Column(String)
+
     def __repr__(self):
-        return ("Tutor Name: {},Tutor's password: {}, Tutor's Location: {}, times: {}".format(self.name,self.password, self.location, self.times))
+        return ("Tutor Name: {},Tutor's password: {}, Tutor's Location: {}, times: {}, experience: {}, degree: {}".format(self.name,self.password, self.location, self.times, self.experience, self.degree))
 
 class Time(Base):
     __tablename__ = "Time"
@@ -37,4 +41,4 @@ class Time(Base):
     tutor_username = Column(String, ForeignKey("Tutors.username"))
 
     def __repr__(self):
-        return("time: {},{}")
+        return("{},{}".format(self.time, self.subject))
