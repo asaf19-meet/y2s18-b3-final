@@ -23,14 +23,24 @@
 			Menu
 			<span></span>
 		</a>
-	</header> <!-- .cd-header -->
+	</header>
 	
 	<main>
-		<h1>TNM</h1>
-        <!-- all your content here -->
-        <h1> TNM </h1>
-        <h4>Tutor Next To Me</h4>
-        <h3>I'm a student</h3>
+        <!-- <h1>TNM</h1> -->
+        <div class="bg-img">
+            <div class="container">
+            <div class="padding">
+              <h1 class="w3-center test">TNM</h1>
+            </div>
+            </div>
+        </div>
+
+        <div class="img">
+                <div class="container2">
+                    <img src="../static/student.jpg" width = "500" hight = "300" alt="student">
+                </div>
+                </div>
+            </div>
         <p><a href="{{url_for('student_login')}}">log in</a></p>
         <p><a href="{{url_for('student_signup')}}">sign up</a></p>          
 
@@ -42,23 +52,23 @@
 	<nav class="cd-3d-nav-container">
 		<ul class="cd-3d-nav">
 			<li class="cd-selected">
-				<a href="#0">Dashboard</a>
+				<a href="{{url_for('home')}}", style="padding-top: 25%">Home</a>
 			</li>
 
 			<li>
-				<a href="#0">Projects</a>
+				<a href="#0", style="padding-top: 25%">Projects</a>
 			</li>
 
 			<li>
-				<a href="#0">Images</a>
+				<a href="#0", style="padding-top: 25%">Images</a>
 			</li>
 
 			<li>
-				<a href="#0">Settings</a>
+				<a href="#0", style="padding-top: 25%">Settings</a>
 			</li>
 
 			<li>
-				<a href="#0">New</a>
+				<a href="#0", style="padding-top: 25%">New</a>
 			</li>
 		</ul> <!-- .cd-3d-nav -->
 

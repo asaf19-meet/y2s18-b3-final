@@ -66,4 +66,4 @@ def add_time(time, subject, tutor_username):
 # add_student("asi", "123456","asafi", "Nazareth", "10th")
 # add_time("friday", "CS", "usernme")
 
-# print(get_tutors())
+print(get_tutors())
