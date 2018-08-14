@@ -45,7 +45,12 @@
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
             </li>
             <li class="nav-item">
-                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+                <!-- <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button> -->
+                <form action="/student/login" method="get">
+                  <input class="btn btn-primary" type="submit" value="login" 
+                       name="login" id="frm1_submit" />
+                </form>
+              
             </li>
           </ul>
         </div>
@@ -338,7 +343,7 @@
                     <input type="text" name="name" placeholder="Name"><br>
                     <input type="text" name="location" placeholder="Location"><br>
                     <input type="text" name="grade" placeholder="Grade"><br>
-                    <input type="submit" name = "submit">
+                    <input class="btn btn-primary" type="submit" name = "submit">
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fa fa-times"></i>
                     Close</button>
@@ -366,14 +371,15 @@
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
                   <form action = "/tutor/signup" method="POST">
-                    <p>Teacher Signup</p>
+                    <p>Tutor Signup</p>
                   <input type="text" name="username" placeholder="Username"><br>
                   <input type="password" name="password" placeholder="Password"><br>
                   <input type="text" name="name" placeholder="Name"><br>
                   <input type="text" name="location" placeholder="Location"><br>
+                  <input type="text" name="subject" placeholder="Subject"><br>
                   <input type="text" name="experience" placeholder="Experience"><br>
                   <input type="text" name="degree" placeholder="Degree"><br>
-                  <input type="submit" name = "submit">
+                  <input class="btn btn-primary" type="submit" name = "submit">
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fa fa-times"></i>
                     Close</button>
@@ -524,24 +530,24 @@
 
   <div id="id01" class="modal">
   
-    <form class="modal-content animate" action="/action_page.php">
+    <form class="modal-content animate" action="/student/login">
       <div class="imgcontainer">
         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
         <img src="img_avatar2.png" alt="Login" class="avatar">
       </div>
-  
-      <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
-  
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-          
-        <button type="submit">Login</button>
-        <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
-      </div>
+      <form action = "/student/login" method="POST">
+        <div class="container">
+          <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+    
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+            
+          <button type="submit">Login</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label>
+        </div>
   
       <div class="container" style="background-color:#f1f1f1">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
