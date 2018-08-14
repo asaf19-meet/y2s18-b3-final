@@ -43,7 +43,7 @@ def student_login():
         POST_USERNAME = str(request.form['username'])
         POST_PASSWORD = str(request.form['password'])
         student = auth_student(POST_USERNAME, POST_PASSWORD)
-        
+        print(student)
         if student is not None:
             session['logged_in_student'] = True
             session["username"] = student.username
