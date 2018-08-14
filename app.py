@@ -26,11 +26,21 @@ def home():
 
 @app.route('/tutor/student_request')
 def student_request():
+
     return render_template('student_request_page.html')
 
 @app.route('/student/subjects_page')
 def subjects_page():
-    return render_template('subjects_page.html')
+    if not session.get('logged_in_student'):
+        return render_template('home.html')
+    elif session.get('logged_in_student'):
+        user_stu = get_student_by_username(session["username"])
+        return render_template("subjects_page.html", student = user_stu)
+    
+
+
+
+
 
 @app.route('/student/subjects_page/tutor_option/<string:subject>')
 def tutor_option(subject):
