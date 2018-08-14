@@ -1,6 +1,6 @@
 # Database related imports
 # Make sure to import your tables!
-from model import Base, Student, Tutor, Time
+from model import Base, Student, Tutor
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -25,6 +25,15 @@ def auth_tutor(tutor_username, tutor_password):
     print(tutor)
     return tutor
 
+def delete_all_students():
+    session.query(Student).delete()
+    session.commit()
+
+def delete_all_tutors():
+    session.query(Tutor).delete()
+    session.commit()
+
+
 def add_student(student_username, student_password, student_name, student_location, student_grade):
     print("Added a student!")
     session = DBSession()
@@ -43,27 +52,32 @@ def get_tutors():
     tutors = session.query(Tutor).all()
     return tutors
 
+def get_students():
+    session = DBSession()
+    students = session.query(Student).all()
+    return students    
+
 def get_student_by_username(username):
     session = DBSession()
     student = session.query(Student).filter_by(username= username).first()
     return student
 
-def add_tutor(tutor_username, tutor_password, tutor_name, tutor_location, tutor_experience, tutor_degree):
+def add_tutor(tutor_username, tutor_password, tutor_name, tutor_location, tutor_subjects, tutor_experience, tutor_degree):
     print("Added a tutor!")
     session = DBSession()
-    tutor = Tutor(username = tutor_username, name = tutor_name, password = tutor_password, location = tutor_location, experience = tutor_experience, degree = tutor_degree)
+    tutor = Tutor(username = tutor_username, name = tutor_name, password = tutor_password, location = tutor_location, subjects = tutor_subjects, experience = tutor_experience, degree = tutor_degree)
     session.add(tutor)
     session.commit()
 
-def add_time(time, subject, tutor_username):
-    print("Added Time!")
-    session = DBSession()
-    time = Time(time = time, subject = subject, tutor_username = tutor_username)
-    session.add(time)
-    session.commit()
+# def add_time(time, subject, tutor_username):
+#     print("Added Time!")
+#     session = DBSession()
+#     time = Time(time = time, subject = subject, tutor_username = tutor_username)
+#     session.add(time)
+#     session.commit()
 
-
+#add_tutor("bs","bs","bs","bs","bs","bs", "bs")
 # add_student("asi", "123456","asafi", "Nazareth", "10th")
 # add_time("friday", "CS", "usernme")
 
-print(get_tutors())
+print(get_students())
