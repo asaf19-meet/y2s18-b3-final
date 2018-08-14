@@ -43,6 +43,11 @@ def get_tutors():
     tutors = session.query(Tutor).all()
     return tutors
 
+def get_students():
+    session = DBSession()
+    students = session.query(Student).all()
+    return students
+
 def get_student_by_username(username):
     session = DBSession()
     student = session.query(Student).filter_by(username= username).first()
@@ -62,8 +67,10 @@ def add_time(time, subject, tutor_username):
     session.add(time)
     session.commit()
 
-
-# add_student("asi", "123456","asafi", "Nazareth", "10th")
-# add_time("friday", "CS", "usernme")
+if __name__ == '__main__':
+    # add_student("asi", "123456","asafi", "Nazareth", "10th")
+    # add_time("friday", "CS", "usernme")
+    pass
+print(get_students())
 
 print(get_tutors())
