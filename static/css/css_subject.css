@@ -4,17 +4,17 @@
 
 .imglabel {
 	position: relative;
-	top: 280px;
+	top: 185px;
 	font-size: 100px;
 	font-weight: 900;
 	color: orange;
 }
 
-h2
+h1
 {
 	text-align: center;
 }
-h4{
+h2{
 	text-align:center;
 }
 
