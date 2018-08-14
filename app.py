@@ -107,9 +107,10 @@ def tutor_signup():
         password = request.form['password']
         name = request.form['name']
         location = request.form['location']
+        subject = request.form['subjects']
         experience = request.form['experience']
         degree = request.form['degree']        
-        add_tutor(username,password,name,location,experience,degree)
+        add_tutor(username,password,name,location,subject,experience,degree)
         session['logged_in_tutor'] = True
         session["username"] = username
         return redirect(url_for('home'))
