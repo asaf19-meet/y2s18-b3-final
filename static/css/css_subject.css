@@ -1,0 +1,33 @@
+.centered {
+	text-align: center;
+}
+
+.imglabel {
+	position: relative;
+	top: 280px;
+	font-size: 100px;
+	font-weight: 900;
+	color: orange;
+}
+
+h2
+{
+	text-align: center;
+}
+h4{
+	text-align:center;
+}
+
+
+#math_subject
+{
+	position: relative;
+    color: orange;
+}
+
+#physics
+{
+	position: relative;
+    color: orange;
+}
+
