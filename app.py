@@ -2,7 +2,7 @@
 from flask import Flask, render_template, url_for, redirect, request, session, flash
 
 # Add functions you need from databases.py to the next line!
-from databases import add_student, get_tutor_by_username, auth_student, get_student_by_username, auth_tutor, add_tutor, delete_all_tutors, delete_all_students, get_tutors, get_students
+from databases import add_student, get_tutor_by_username, auth_student, get_student_by_username, auth_tutor, add_tutor, delete_all_tutors, delete_all_students, get_tutors, get_students, get_tutors_by_subject
 
 
 # Starting the flask app
@@ -39,11 +39,12 @@ def subjects_page():
     
 
 
-@app.route('/student/subjects_page/tutor_option')
-def tutor_option():
 
-    return render_template('tutor_option_page.html')
 
+
+@app.route('/student/subjects_page/tutor_option/<string:subject>')
+def tutor_option(subject):
+    return render_template('tutor_option_page.html',tutors = get_tutors_by_subject(subject), subject=subject)
 
 @app.route('/student/login', methods=['GET', 'POST'])
 def student_login():

@@ -26,10 +26,12 @@ def auth_tutor(tutor_username, tutor_password):
     return tutor
 
 def delete_all_students():
+    session = DBSession()
     session.query(Student).delete()
     session.commit()
 
 def delete_all_tutors():
+    session = DBSession()
     session.query(Tutor).delete()
     session.commit()
 
@@ -55,12 +57,17 @@ def get_tutors():
 def get_students():
     session = DBSession()
     students = session.query(Student).all()
-    return students
+    return students    
 
 def get_student_by_username(username):
     session = DBSession()
     student = session.query(Student).filter_by(username= username).first()
     return student
+
+def get_tutors_by_subject(subject):
+    session = DBSession()
+    tutors = session.query(Tutor).filter_by(subjects = subject).all()
+    return tutors
 
 def add_tutor(tutor_username, tutor_password, tutor_name, tutor_location, tutor_subjects, tutor_experience, tutor_degree):
     print("Added a tutor!")
@@ -69,17 +76,15 @@ def add_tutor(tutor_username, tutor_password, tutor_name, tutor_location, tutor_
     session.add(tutor)
     session.commit()
 
-def add_time(time, subject, tutor_username):
-    print("Added Time!")
-    session = DBSession()
-    time = Time(time = time, subject = subject, tutor_username = tutor_username)
-    session.add(time)
-    session.commit()
+# def add_time(time, subject, tutor_username):
+#     print("Added Time!")
+#     session = DBSession()
+#     time = Time(time = time, subject = subject, tutor_username = tutor_username)
+#     session.add(time)
+#     session.commit()b
 
-if __name__ == '__main__':
-    # add_student("asi", "123456","asafi", "Nazareth", "10th")
-    # add_time("friday", "CS", "usernme")
-    pass
-print(get_students())
-
-print(get_students())
+#add_tutor("bs","bs","bs","bs","bs","bs", "bs")
+# add_student("asi", "123456","asafi", "Nazareth", "10th")
+# add_time("friday", "CS", "usernme")
+# add_tutor("ds","ds","Asaf","Jerusalem","biology","3 years","11th grade")
+# print(get_tutors())

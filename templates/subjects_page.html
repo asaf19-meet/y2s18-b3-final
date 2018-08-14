@@ -9,32 +9,31 @@
 
         <!-- list of subject that tutors can teach -->
 
-        <h1> Hello {{student.name}}</h1>
-        <h2>These are the subjects you can get tutoring services in:</h2>
+        <h2> Hello {{student.name}}</h2>
+        <h4>These are the subjects you can get tutoring services in:</h4>
+
         <div id = math_subject>
         	<!-- this is were we will add a picture with a link to the page -->
             <div class="centered">
-                <div class="imglabel"><a href = "{{url_for('tutor_option')}}">Math</a></div>
+                <div class="imglabel"><a href = "{{url_for('tutor_option', subject='math')}}">Math</a></div>
         	<img src="https://victorystepeducation.com/themes/default/assets-new/images/math-icon.png" alt="math-icon" style="width:50%;">
             </div>	
         </div> 
 
-         <!-- physics -->
-        
-            
+         <!-- physics -->            
         <div id = "physics">
             <!-- this is were we will add a picture with a link to the page -->
             <div class="centered">
-                <div class="imglabel"><a href = "{{url_for('tutor_option')}}">physics</a></div>
+                <div class="imglabel"><a href = "{{url_for('tutor_option', subject='physics')}}">physics</a></div>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_EbbF2VsrmpaL-_8hrHJqn7LlKXdMr9LADqTJ0_FYBqL4rmVr5w" alt="physics" style="width:50%;">
             </div>  
         </div> 
 
-         <!-- this will be the biology link and picture -->
+         <!-- biology -->
           <div id = "biology">
             <!-- this is were we will add a picture with a link to the page -->
             <div class="centered">
-                <div class="imglabel"><a href = "{{url_for('tutor_option')}}">biology</a></div>
+                <div class="imglabel"><a href = "{{url_for('tutor_option', subject='biology')}}">biology</a></div>
             <img src="https://i2.wp.com/universitymagazine.ca/wp-content/uploads/2018/02/How-To-Major-In-Biology.jpg?resize=615%2C400&ssl=1" alt="biology" style="width:50%;">
             </div>  
         </div>
