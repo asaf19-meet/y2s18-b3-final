@@ -114,12 +114,7 @@ def tutor_signup():
         session['logged_in_tutor'] = True
         session["username"] = username
         return redirect(url_for('home'))
-
-
-
-
-
-
+        
 # Running the Flask app
 if __name__ == "__main__":
     app.run(debug=True)
