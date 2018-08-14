@@ -14,10 +14,14 @@ app.secret_key = "q34we;kHvWEJWE:KVNl"
 def home():
     if not session.get('logged_in_student'):
         return render_template('home.html')
-    else:
+    elif session.get('logged_in_student'):
         user = get_student_by_username(session["username"])
-    # if not session.get('logged_in_tutor')
-        return render_template("subjects_page.html", student = user )
+        return render_template("subjects_page.html", student = user)
+    if not session.get('logged_in_tutor')
+        return render_template("home.html")
+    elif session.get('logged_in_tutor'):
+        user = get_tutor_by_username(session["username"])
+        return render_template("student_request.html", student = user)
 
 @app.route('/tutor/student_request')
 def student_request():
