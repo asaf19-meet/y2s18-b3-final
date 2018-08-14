@@ -14,7 +14,7 @@ html {
 body {
   font-size: 1.6rem;
   font-family: "Open Sans", sans-serif;
-  background-color: #808080;
+  background-color: #181818;
 }
 
 a {
@@ -27,7 +27,7 @@ Main Components
 
 -------------------------------- */
 .cd-header {
-  height: 80px;
+  height: 60px;
   width: 90%;
   margin: 0 auto;
   -webkit-transition: -webkit-transform 0.5s;
@@ -41,6 +41,8 @@ Main Components
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  /* position: fixed; */
+  /* order: -1; */
 }
 .cd-header::after {
   clear: both;
@@ -142,7 +144,7 @@ Main Components
   position: fixed;
   top: 0;
   left: 0;
-  height: 80px;
+  height: 20px;
   width: 100%;
   background-color: #000000;
   visibility: hidden;
