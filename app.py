@@ -16,7 +16,7 @@ def home():
         return render_template('home.html')
     else:
         user = get_student_by_username(session["username"])
-        return render_template("subjects_page.html", student =user )
+        return render_template("subjects_page.html", student = user )
 
 @app.route('/tutor/log_in')
 def log_in_tutor():
