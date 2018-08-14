@@ -55,7 +55,7 @@ def get_tutors():
 def get_students():
     session = DBSession()
     students = session.query(Student).all()
-    return students    
+    return students
 
 def get_student_by_username(username):
     session = DBSession()
@@ -69,15 +69,17 @@ def add_tutor(tutor_username, tutor_password, tutor_name, tutor_location, tutor_
     session.add(tutor)
     session.commit()
 
-# def add_time(time, subject, tutor_username):
-#     print("Added Time!")
-#     session = DBSession()
-#     time = Time(time = time, subject = subject, tutor_username = tutor_username)
-#     session.add(time)
-#     session.commit()
+def add_time(time, subject, tutor_username):
+    print("Added Time!")
+    session = DBSession()
+    time = Time(time = time, subject = subject, tutor_username = tutor_username)
+    session.add(time)
+    session.commit()
 
-#add_tutor("bs","bs","bs","bs","bs","bs", "bs")
-# add_student("asi", "123456","asafi", "Nazareth", "10th")
-# add_time("friday", "CS", "usernme")
+if __name__ == '__main__':
+    # add_student("asi", "123456","asafi", "Nazareth", "10th")
+    # add_time("friday", "CS", "usernme")
+    pass
+print(get_students())
 
 print(get_students())
