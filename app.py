@@ -32,10 +32,9 @@ def student_request():
 def subjects_page():
     return render_template('subjects_page.html')
 
-@app.route('/student/subjects_page/<string:subject>')
+@app.route('/student/subjects_page/tutor_option/<string:subject>')
 def tutor_option(subject):
-    return render_template('tutor_option_page.html',tutors = get_tutors_by_subject(subject))
-
+    return render_template('tutor_option_page.html',tutors = get_tutors_by_subject(subject), subject=subject)
 
 @app.route('/student/login', methods=['GET', 'POST'])
 def student_login():
