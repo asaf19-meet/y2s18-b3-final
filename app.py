@@ -15,31 +15,14 @@ def home():
     if not session.get('logged_in_student'):
         return render_template('home.html')
     elif session.get('logged_in_student'):
-        user = get_student_by_username(session["username"])
-        return render_template("subjects_page.html", student = user)
-    if not session.get('logged_in_tutor')
+        user_stu = get_student_by_username(session["username"])
+        return render_template("subjects_page.html", student = user_stu)
+
+    if not session.get('logged_in_tutor'):
         return render_template("home.html")
     elif session.get('logged_in_tutor'):
-        user = get_tutor_by_username(session["username"])
-        return render_template("student_request.html", student = user)
-
-# @app.route('/tutor/log_in')
-# def log_in_tutor():
-#     return render_template('log_in.html')
-    
-# @app.route('/student/log_in')
-# def log_in_student():
-# 	return render_template('log_in.html')
-# @app.route('/tutor/sign_up')
-# def sign_up_tutor():
-# 	return render_template('sign_up.html')
-# @app.route('/tutor')
-# def tutor():
-#     return render_template('tutor_page.html')
-
-# @app.route('/student')
-# def student():
-#     return render_template('student_page.html')
+        user_tut = get_tutor_by_username(session["username"])
+        return render_template("student_request.html", student = user_tut)
 
 @app.route('/tutor/student_request')
 def student_request():
@@ -47,8 +30,7 @@ def student_request():
 
 @app.route('/student/subjects_page')
 def subjects_page():
-    student = get_student_by_username(session["username"])
-    return render_template('subjects_page.html',student = student)
+    return render_template('subjects_page.html')
 
 @app.route('/student/subjects_page/tutor_option')
 def tutor_option():
