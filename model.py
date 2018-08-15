@@ -34,9 +34,9 @@ class Tutor(Base):
     subjects = Column(String)
     experience = Column(String)
     degree = Column(String)
-    students_math = relationship("Student", back_populates="math_tutor")
-    students_biology = relationship("Student", back_populates="bilogy_tutor")
-    students_physisc = relationship("Student", back_populates="physics_tutor")
+    students_math = relationship("Student", back_populates="math_tutor", foreign_keys="Student.math_tutor_username")
+    students_biology = relationship("Student", back_populates="biology_tutor", foreign_keys="Student.biology_tutor_username")
+    students_physics = relationship("Student", back_populates="physics_tutor", foreign_keys="Student.physics_tutor_username")
 
 
     def __repr__(self):
