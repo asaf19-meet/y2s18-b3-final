@@ -117,7 +117,7 @@
         </div>
         <!-- <div class="row text-center">
           <div class="col-md-4">
-<!--             <span class="fa-stack fa-4x">
+            <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
             </span> -->
@@ -294,7 +294,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-            <span class="copyright">Copyright &copy; Your Website 2018</span>
+            <span class="copyright">Copyright &copy; TNM 2018</span>
           </div>
           <div class="col-md-4">
             <ul class="list-inline social-buttons">
@@ -345,7 +345,7 @@
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <form action = "/student/signup" method="POST">
+                  <form action = "/student/signup" method="POST" enctype="multipart/form-data">
                     <p>Student Signup</p>
                   <input type="text" name="username" placeholder="Username"><br>
                     <input type="password" name="password" placeholder="Password"><br>
@@ -353,6 +353,7 @@
                     <input type="text" name="location" placeholder="Location"><br>
                     <input type="text" name="grade" placeholder="Grade"><br>
                     <input type="text" name="phone_number" placeholder="Phone number"><br>
+                    <input type="file" name="img" accept="image/*"> Profile picture<br>
                     <input class="btn btn-primary" type="submit" name = "submit">
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fa fa-times"></i>
@@ -380,7 +381,7 @@
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <form action = "/tutor/signup" method="POST">
+                  <form action = "/tutor/signup" method="POST" enctype="multipart/form-data">
                     <p>Tutor Signup</p>
                   <input type="text" name="username" placeholder="Username"><br>
                   <input type="password" name="password" placeholder="Password"><br>
@@ -391,6 +392,8 @@
                   <input type="checkbox" name="math" value="math"> Math<br>
                   <input type="text" name="experience" placeholder="Experience"><br>
                   <input type="text" name="degree" placeholder="Degree"><br>
+                  <input type="file" name="img" accept="image/*"> Profile picture <br>
+                  <input type="file" name="authentication" accept="image/*"> Image Authentication. Please read the following steps carefully:
                   <input class="btn btn-primary" type="submit" name = "submit">
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fa fa-times"></i>
