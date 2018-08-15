@@ -142,7 +142,8 @@
 	var username_t = "{{tutor.username}}"
     $.post( "/student/subjects_page/tutor_option/{{ tutors[0].subjects }}", {
     	requested_tutor: username_t ,
-	})
+	});
+	$(".image").attr('src', "/static/img/img_avatar_chosen.png");
 });
 {%endfor%}
 </script>
