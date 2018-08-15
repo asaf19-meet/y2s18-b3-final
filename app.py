@@ -2,7 +2,7 @@
 from flask import Flask, render_template, url_for, redirect, request, session, flash
 
 # Add functions you need from databases.py to the next line!
-from databases import add_student, get_tutor_by_username, auth_student, get_student_by_username, auth_tutor, add_tutor, delete_all_tutors, delete_all_students, get_tutors, get_students, get_tutors_by_subject
+from databases import *
 
 
 # Starting the flask app
@@ -12,22 +12,26 @@ app.secret_key = "q34we;kHvWEJWE:KVNl"
 # App routing code here
 @app.route('/')
 def home():
-    if not session.get('logged_in_student'):
-        return render_template('home.html')
-    elif session.get('logged_in_student'):
+    if session.get('logged_in_student') == True:
         user_stu = get_student_by_username(session["username"])
         return render_template("subjects_page.html", student = user_stu)
-
-    if not session.get('logged_in_tutor'):
-        return render_template("home.html")
-    elif session.get('logged_in_tutor'):
+    elif session.get('logged_in_tutor') == True:
         user_tut = get_tutor_by_username(session["username"])
-        return render_template("student_request.html", student = user_tut)
+        return render_template("tutor_page.html", tutor = user_tut)
+    else:
+        return render_template("home.html")
 
-@app.route('/tutor/student_request')
-def student_request():
 
-    return render_template('student_request_page.html')
+@app.route('/tutor/tutor_page')
+def tutor_page():
+    username = session["username"]
+    tutor =get_tutor_by_username(username)
+    return render_template('tutor_page.html', tutor = tutor)
+
+
+
+
+
 
 @app.route('/student/subjects_page')
 def subjects_page():
@@ -48,7 +52,9 @@ def tutor_option(subject):
         return render_template('tutor_option_page.html',tutors = get_tutors_by_subject(subject), subject=subject)
     else: 
         tutor_username = request.form['requested_tutor']
-        
+        connections[subject](user_stu.username, tutor_username)
+        return redirect(url_for('tutor_page',username = tutor_username))
+
 
 @app.route('/student/login', methods=['GET', 'POST'])
 def student_login():
@@ -106,7 +112,8 @@ def student_signup():
         name = request.form['name']
         location = request.form['location']
         grade = request.form['grade']
-        add_student(username,password,name,location,grade)
+        phone_number = request.form['phone_number']
+        add_student(username,password,name,location,grade,phone_number)
         session['logged_in_student'] = True
         session["username"] = username
         return redirect(url_for('home'))
@@ -127,7 +134,7 @@ def tutor_signup():
         add_tutor(username,password,name,location,subject,experience,degree)
         session['logged_in_tutor'] = True
         session["username"] = username
-        return redirect(url_for('home'))
+        return redirect(url_for('tutor_page'))
         
 # Running the Flask app
 if __name__ == "__main__":

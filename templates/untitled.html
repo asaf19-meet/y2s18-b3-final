@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<form action="" method="POST">
+
+	<input type="file" name="profile_pic" accept="image/*">
+	<input type="submit" name = "submit">
+</form>
+<script type="text/javascript">
+
+function handleImage() {
+	alert("HEY!");
+}
+
+function getBase64Image(img) {
+		var canvas = document.createElement("canvas");
+		canvas.width = img.width;
+		canvas.height = img.height;
+		var two_d_image = canvas.getContext("2d");
+		two_d_image.drawImage(img, 0, 0);
+		var what_we_want = canvas.toDataURL("image/png");
+		return what_we_want.replace(/^data:image\/(png|jpg);base64,/, "");
+}
+
+var base64 = getBase64Image(document.getElementById("imageid"));
+</script>
+</body>
+</html>
