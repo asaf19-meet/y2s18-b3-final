@@ -114,7 +114,7 @@ connections = {
 # add_student("asi", "123456","asafi", "Nazareth", "10th")
 # add_time("friday", "CS", "usernme")
 # add_tutor("fs","fs","Mohammad","Jerusalem","biology","3 years","11th grade")
-print(get_tutors())
+# print(get_tutors())
 # print(get_students())
 # connect_student_tutor_physics("asi","bs")
 # print(get_students())

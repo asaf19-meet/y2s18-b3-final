@@ -140,7 +140,7 @@
 {%for tutor in tutors%}
 	$("#{{tutor.username}}").on("click", function () {
 	var username_t = "{{tutor.username}}"
-    $.post( "/student/subjects_page/tutor_option/{{ tutors[0].subjects }}", {
+    $.post( "/student/subjects_page/tutor_option/{{ subject }}", {
     	requested_tutor: username_t ,
 	});
 	$("#img_{{tutor.username}}").attr('src', "/static/img/img_avatar_chosen.png");
