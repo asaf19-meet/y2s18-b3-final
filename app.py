@@ -41,10 +41,14 @@ def subjects_page():
 
 
 
-
-@app.route('/student/subjects_page/tutor_option/<string:subject>')
+@app.route('/student/subjects_page/tutor_option/<string:subject>', methods = ['GET','POST'])
 def tutor_option(subject):
-    return render_template('tutor_option_page.html',tutors = get_tutors_by_subject(subject), subject=subject)
+    user_stu = get_student_by_username(session["username"])
+    if request.method == 'GET':
+        return render_template('tutor_option_page.html',tutors = get_tutors_by_subject(subject), subject=subject)
+    else: 
+        tutor_username = request.form['requested_tutor']
+        
 
 @app.route('/student/login', methods=['GET', 'POST'])
 def student_login():
