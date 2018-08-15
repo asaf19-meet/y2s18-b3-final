@@ -66,8 +66,12 @@ def get_student_by_username(username):
 
 def get_tutors_by_subject(subject):
     session = DBSession()
-    tutors = session.query(Tutor).filter_by(subjects = subject).all()
-    return tutors
+    tutors = session.query(Tutor).all()
+    real_tutors=[]
+    for tutor in tutors:
+        if subject in tutor.subjects:
+            real_tutors.append(tutor)
+    return real_tutors
 
 def add_tutor(tutor_username, tutor_password, tutor_name, tutor_location, tutor_subjects, tutor_experience, tutor_degree, tutor_img, tutor_authentication):
     print("Added a tutor!")
@@ -110,7 +114,7 @@ connections = {
 # add_student("asi", "123456","asafi", "Nazareth", "10th")
 # add_time("friday", "CS", "usernme")
 # add_tutor("fs","fs","Mohammad","Jerusalem","biology","3 years","11th grade")
-# print(get_tutors())
+print(get_tutors())
 # print(get_students())
 # connect_student_tutor_physics("asi","bs")
 # print(get_students())

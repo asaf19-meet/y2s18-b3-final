@@ -127,7 +127,7 @@
 
 {%for tutor in tutors%} 
 <div class="container" id ="{{tutor.username}}" >
-  <img src="/static/img/img_avatar3.png" alt="Avatar" class="image">
+  <img id='img_{{tutor.username}}' src="/static/img/img_avatar3.png" alt="Avatar" class="image">
   <div class="overlay">
     <div class="text">lives in {{tutor.location}}</div>
    <div class="overlay2">
@@ -142,7 +142,8 @@
 	var username_t = "{{tutor.username}}"
     $.post( "/student/subjects_page/tutor_option/{{ tutors[0].subjects }}", {
     	requested_tutor: username_t ,
-	})
+	});
+	$("#img_{{tutor.username}}").attr('src', "/static/img/img_avatar_chosen.png");
 });
 {%endfor%}
 </script>

@@ -47,8 +47,6 @@ def subjects_page():
     
 
 
-
-
 @app.route('/student/subjects_page/tutor_option/<string:subject>', methods = ['GET','POST'])
 def tutor_option(subject):
     user_stu = get_student_by_username(session["username"])
@@ -145,7 +143,11 @@ def tutor_signup():
         password = request.form['password']
         name = request.form['name']
         location = request.form['location']
-        subject = request.form['subjects']
+
+        subject_list = [request.form['biology'] if 'biology' in request.form else '', 
+                        request.form['physics'] if 'physics' in request.form else '', 
+                        request.form['math'] if 'math' in request.form else '']
+        subject_string = ','.join(subject_list)
         experience = request.form['experience']
         degree = request.form['degree']
         img = request.files['img'] 
