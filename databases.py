@@ -36,10 +36,10 @@ def delete_all_tutors():
     session.commit()
 
 
-def add_student(student_username, student_password, student_name, student_location, student_grade, student_phone_number):
+def add_student(student_username, student_password, student_name, student_location, student_grade, student_phone_number, student_img):
     print("Added a student!")
     session = DBSession()
-    student = Student(username=student_username,password=student_password, name=student_name, location=student_location, grade = student_grade, phone_number = student_phone_number)
+    student = Student(username=student_username,password=student_password, name=student_name, location=student_location, grade = student_grade, phone_number = student_phone_number, img = student_img)
     session.add(student)
     session.commit()
 
@@ -69,10 +69,10 @@ def get_tutors_by_subject(subject):
     tutors = session.query(Tutor).filter_by(subjects = subject).all()
     return tutors
 
-def add_tutor(tutor_username, tutor_password, tutor_name, tutor_location, tutor_subjects, tutor_experience, tutor_degree):
+def add_tutor(tutor_username, tutor_password, tutor_name, tutor_location, tutor_subjects, tutor_experience, tutor_degree, tutor_img, tutor_authentication):
     print("Added a tutor!")
     session = DBSession()
-    tutor = Tutor(username = tutor_username, name = tutor_name, password = tutor_password, location = tutor_location, subjects = tutor_subjects, experience = tutor_experience, degree = tutor_degree)
+    tutor = Tutor(username = tutor_username, name = tutor_name, password = tutor_password, location = tutor_location, subjects = tutor_subjects, experience = tutor_experience, degree = tutor_degree, img = tutor_img, authentication = tutor_authentication)
     session.add(tutor)
     session.commit()
 
