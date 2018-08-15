@@ -3,14 +3,17 @@ from flask import Flask, render_template, url_for, redirect, request, session, f
 
 # Add functions you need from databases.py to the next line!
 from databases import *
+import os
 
 
+UPLOAD_FOLDER = '/path/to/the/uploads'
 # Starting the flask app
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = "q34we;kHvWEJWE:KVNl"
 
 # App routing code here
-@app.route('/')
+@app.route('/', methods=["POST", "GET"])
 def home():
     if session.get('logged_in_student') == True:
         user_stu = get_student_by_username(session["username"])
@@ -20,6 +23,7 @@ def home():
         return render_template("tutor_page.html", tutor = user_tut)
     else:
         return render_template("home.html")
+
 
 
 @app.route('/tutor/tutor_page')
@@ -41,8 +45,6 @@ def subjects_page():
         user_stu = get_student_by_username(session["username"])
         return render_template("subjects_page.html", student = user_stu)
     
-
-
 
 
 @app.route('/student/subjects_page/tutor_option/<string:subject>', methods = ['GET','POST'])
@@ -105,7 +107,7 @@ def tutor_logout():
 @app.route("/student/signup", methods=['GET', 'POST'])
 def student_signup():
     if request.method == 'GET':
-        return render_template('student_signup.html')
+        return redirect(url_for('student_signup'))
     else:
         username = request.form['username']
         password = request.form['password']
@@ -113,9 +115,21 @@ def student_signup():
         location = request.form['location']
         grade = request.form['grade']
         phone_number = request.form['phone_number']
-        add_student(username,password,name,location,grade,phone_number)
+        img = None
+        if 'img' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        else:
+            img = request.files['img'].read()  
+
+        add_student(username,password,name,location,grade,phone_number, img)
         session['logged_in_student'] = True
         session["username"] = username
+
+
+   
+        # check if the post request has the file part
+        
         return redirect(url_for('home'))
     
 
@@ -128,12 +142,23 @@ def tutor_signup():
         password = request.form['password']
         name = request.form['name']
         location = request.form['location']
-        subject = request.form['subjects']
+
+        subject_list = [request.form['biology'] if 'biology' in request.form else '', 
+                        request.form['physics'] if 'physics' in request.form else '', 
+                        request.form['math'] if 'math' in request.form else '']
+        subject_string = ','.join(subject_list)
         experience = request.form['experience']
-        degree = request.form['degree']        
-        add_tutor(username,password,name,location,subject,experience,degree)
+        degree = request.form['degree']
+        img, authentication = None, None
+        if 'img' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        else:
+            img = request.files['img'].read()
+            authentication = request.files['authentication'].read() 
+        add_tutor(username,password,name,location,subject_string,experience,degree, img, authentication)
         session['logged_in_tutor'] = True
-        session["username"] = username
+        session["username"] = username 
         return redirect(url_for('tutor_page'))
         
 # Running the Flask app
