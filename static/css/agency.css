@@ -56,6 +56,7 @@ section h3.section-subheading {
 }
 
 .btn {
+  padding-top: 10px;
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
 }
@@ -66,6 +67,7 @@ section h3.section-subheading {
 }
 
 .btn-primary {
+  padding-top: 10px;
   background-color: #fed136;
   border-color: #fed136;
 }
@@ -178,7 +180,24 @@ header.masthead {
   background-size: cover;
 }
 
+header.masthead2 {
+  text-align: center;
+  color: black;
+  background-image: url("../img/suject_bg.png");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 header.masthead .intro-text {
+  padding-top: 150px;
+  padding-bottom: 100px;
+}
+header.masthead2 .intro-text2 {
   padding-top: 150px;
   padding-bottom: 100px;
 }
@@ -191,7 +210,23 @@ header.masthead .intro-text .intro-lead-in {
   font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+header.masthead2 .intro-text2 .intro-lead-in2 {
+  font-size: 22px;
+  font-style: italic;
+  line-height: 22px;
+  margin-bottom: 25px;
+  font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 header.masthead .intro-text .intro-heading {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 50px;
+  margin-bottom: 25px;
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+header.masthead2 .intro-text2 .intro-heading2 {
   font-size: 50px;
   font-weight: 700;
   line-height: 50px;
