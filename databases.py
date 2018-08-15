@@ -76,6 +76,29 @@ def add_tutor(tutor_username, tutor_password, tutor_name, tutor_location, tutor_
     session.add(tutor)
     session.commit()
 
+def connect_student_tutor_biology(student_username,tutor_username):
+    session = DBSession()
+    student = session.query(Student).filter_by(username= student_username).first()
+    student.biology_tutor_username = tutor_username
+    session.commit()
+
+def connect_student_tutor_math(student_username,tutor_username):
+    session = DBSession()
+    student = session.query(Student).filter_by(username= student_username).first()
+    student.math_tutor_username = tutor_username
+    session.commit()
+
+def connect_student_tutor_physics(student_username,tutor_username):
+    session = DBSession()
+    student = session.query(Student).filter_by(username= student_username).first()
+    student.physics_tutor_username = tutor_username
+    session.commit()
+
+connections = {
+    "biology" : connect_student_tutor_biology,
+    "math" : connect_student_tutor_math,
+    "physics" : connect_student_tutor_physics
+}
 # def add_time(time, subject, tutor_username):
 #     print("Added Time!")
 #     session = DBSession()
@@ -83,9 +106,11 @@ def add_tutor(tutor_username, tutor_password, tutor_name, tutor_location, tutor_
 #     session.add(time)
 #     session.commit()b
 
-add_tutor("bs","bs","bs","bs","bs","bs", "bs")
-add_student("asi", "123456","asafi", "Nazareth", "10th")
+# add_tutor("bs","bs","bs","bs","bs","bs", "bs")
+# add_student("asi", "123456","asafi", "Nazareth", "10th")
 # add_time("friday", "CS", "usernme")
 # add_tutor("fs","fs","Mohammad","Jerusalem","biology","3 years","11th grade")
 # print(get_tutors())
+# print(get_students())
+# connect_student_tutor_physics("asi","bs")
 # print(get_students())

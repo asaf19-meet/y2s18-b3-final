@@ -23,7 +23,7 @@ class Student(Base):
     physics_tutor = relationship("Tutor", back_populates="students_physics", foreign_keys=[physics_tutor_username])
 
     def __repr__(self):
-        return ("Student name: {}, Student's password: {}, Student's Location:{}, Student's grade: {}".format(self.name, self.password, self.location, self.grade))
+        return ("Student name: {}, Student's password: {}, Student's Location:{}, Student's grade: {}, Biology: {}, Math: {}, Physics: {}".format(self.name, self.password, self.location, self.grade, self.biology_tutor, self.math_tutor, self.physics_tutor))
 
 class Tutor(Base):
     __tablename__ = "Tutors"
@@ -40,7 +40,7 @@ class Tutor(Base):
 
 
     def __repr__(self):
-        return ("Tutor Name: {},Tutor's password: {}, Tutor's Location: {}, subjects: {}, experience: {}, degree: {}".format(self.name,self.password, self.location, self.subjects, self.experience, self.degree))
+        return ("Tutor Name: {},Tutor's password: {}, Tutor's Location: {}, subjects: {}, experience: {}, degree: {}, Math: {}, Biology: {}, Physics: {}".format(self.name,self.password, self.location, self.subjects, self.experience, self.degree, self.students_math, self.students_biology, self.students_physics))
 
 # class Time(Base):
 #     __tablename__ = "Time"
@@ -51,4 +51,4 @@ class Tutor(Base):
 #     tutor_username = Column(String, ForeignKey("Tutors.username"))
 
     # def __repr__(self):
-    #     return("{},{}".format(self.time, self.subject))
+    #     return("{},{}".format(self.time, self.subject))connect_student_tutor_physicsconnect_student_tutor_physics
