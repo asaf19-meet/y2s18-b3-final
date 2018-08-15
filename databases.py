@@ -83,8 +83,8 @@ def add_tutor(tutor_username, tutor_password, tutor_name, tutor_location, tutor_
 #     session.add(time)
 #     session.commit()b
 
-add_tutor("bs","bs","bs","bs","bs","bs", "bs")
-add_student("asi", "123456","asafi", "Nazareth", "10th")
+# add_tutor("bs","bs","bs","bs","bs","bs", "bs")
+# add_student("asi", "123456","asafi", "Nazareth", "10th")
 # add_time("friday", "CS", "usernme")
 # add_tutor("fs","fs","Mohammad","Jerusalem","biology","3 years","11th grade")
 # print(get_tutors())
