@@ -4,12 +4,15 @@
 
 .imglabel {
 	position: relative;
-	top: 185px;
+	top: 0px;
 	font-size: 100px;
 	font-weight: 900;
 	color: orange;
+	text-decoration: none;
 }
-
+a:hover{
+	text-decoration: none;
+}
 h1
 {
 	text-align: center;
