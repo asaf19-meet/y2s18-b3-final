@@ -12,20 +12,14 @@ app.secret_key = "q34we;kHvWEJWE:KVNl"
 # App routing code here
 @app.route('/')
 def home():
-    if not session.get('logged_in_student'):
-        return render_template('home.html')
-    elif session.get('logged_in_student'):
+    if session.get('logged_in_student') == True:
         user_stu = get_student_by_username(session["username"])
         return render_template("subjects_page.html", student = user_stu)
-
-    if not session.get('logged_in_tutor'):
-        return render_template("home.html")
-    elif session.get('logged_in_tutor'):
+    elif session.get('logged_in_tutor') == True:
         user_tut = get_tutor_by_username(session["username"])
-        return render_template("student_request.html", student = user_tut)
-
-
-
+        return render_template("tutor_page.html", tutor = user_tut)
+    else:
+        return render_template("home.html")
 
 
 @app.route('/tutor/tutor_page/<string:username>')
@@ -138,7 +132,7 @@ def tutor_signup():
         add_tutor(username,password,name,location,subject,experience,degree)
         session['logged_in_tutor'] = True
         session["username"] = username
-        return redirect(url_for('home'))
+        return redirect(url_for('tutor_page'))
         
 # Running the Flask app
 if __name__ == "__main__":
