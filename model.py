@@ -15,6 +15,12 @@ class Student(Base):
     password = Column(String)
     location = Column(String)
     grade = Column(String)
+    math_tutor_username = Column(String, ForeignKey("Tutors.username"))
+    biology_tutor_username = Column(String, ForeignKey("Tutors.username"))
+    physics_tutor_username = Column(String, ForeignKey("Tutors.username"))
+    math_tutor = relationship("Tutor", back_populates="students_math", foreign_keys=[math_tutor_username])
+    biology_tutor = relationship("Tutor", back_populates="students_biology", foreign_keys=[biology_tutor_username])
+    physics_tutor = relationship("Tutor", back_populates="students_physics", foreign_keys=[physics_tutor_username])
 
     def __repr__(self):
         return ("Student name: {}, Student's password: {}, Student's Location:{}, Student's grade: {}".format(self.name, self.password, self.location, self.grade))
@@ -28,6 +34,10 @@ class Tutor(Base):
     subjects = Column(String)
     experience = Column(String)
     degree = Column(String)
+    students_math = relationship("Student", back_populates="math_tutor")
+    students_biology = relationship("Student", back_populates="bilogy_tutor")
+    students_physisc = relationship("Student", back_populates="physics_tutor")
+
 
     def __repr__(self):
         return ("Tutor Name: {},Tutor's password: {}, Tutor's Location: {}, subjects: {}, experience: {}, degree: {}".format(self.name,self.password, self.location, self.subjects, self.experience, self.degree))
