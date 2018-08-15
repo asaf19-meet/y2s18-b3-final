@@ -22,8 +22,9 @@ def home():
         return render_template("home.html")
 
 
-@app.route('/tutor/tutor_page/<string:username>')
-def tutor_page(username):
+@app.route('/tutor/tutor_page')
+def tutor_page():
+    username = session["username"]
     tutor =get_tutor_by_username(username)
     return render_template('tutor_page.html', tutor = tutor)
 
@@ -111,7 +112,8 @@ def student_signup():
         name = request.form['name']
         location = request.form['location']
         grade = request.form['grade']
-        add_student(username,password,name,location,grade)
+        phone_number = request.form['phone_number']
+        add_student(username,password,name,location,grade,phone_number)
         session['logged_in_student'] = True
         session["username"] = username
         return redirect(url_for('home'))

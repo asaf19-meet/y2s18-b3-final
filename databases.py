@@ -36,10 +36,10 @@ def delete_all_tutors():
     session.commit()
 
 
-def add_student(student_username, student_password, student_name, student_location, student_grade):
+def add_student(student_username, student_password, student_name, student_location, student_grade, student_phone_number):
     print("Added a student!")
     session = DBSession()
-    student = Student(username=student_username,password=student_password, name=student_name, location=student_location, grade = student_grade)
+    student = Student(username=student_username,password=student_password, name=student_name, location=student_location, grade = student_grade, phone_number = student_phone_number)
     session.add(student)
     session.commit()
 

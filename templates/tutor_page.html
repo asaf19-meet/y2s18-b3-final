@@ -10,17 +10,20 @@
         <h1> These students want you to tutor them !</h1>
         <h3>Math:</h3>
         {%for student in tutor.students_math%}
-        <p>{{student.name}}</p>
+        <p>The student's name is {{student.name}} and he lives in {{student.location}}</p><br>
+        <p>And you can contact him by calling to this number {{student.phone_number}}</p>
         {%endfor%}
 
         <h3>Physics:</h3>
         {%for student in tutor.students_physics%}
-        <p>{{student.name}}</p>
+        <p>The student's name is {{student.name}} and he lives in {{student.location}}</p><br>
+        <p>And you can contact him by calling to this number {{student.phone_number}}</p>
         {%endfor%}
 
         <h3>Biology:</h3>
         {%for student in tutor.students_biology%}
-        <p>{{student.name}}</p>
+        <p>The student's name is {{student.name}} and he lives in {{student.location}}</p><br>
+        <p>And you can contact him by calling to this number {{student.phone_number}}</p>
         {%endfor%}
 
         <p><a href="{{url_for('home')}}">Home</a></p>

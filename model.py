@@ -15,6 +15,7 @@ class Student(Base):
     password = Column(String)
     location = Column(String)
     grade = Column(String)
+    phone_number = Column(String)
     math_tutor_username = Column(String, ForeignKey("Tutors.username"))
     biology_tutor_username = Column(String, ForeignKey("Tutors.username"))
     physics_tutor_username = Column(String, ForeignKey("Tutors.username"))
@@ -23,7 +24,7 @@ class Student(Base):
     physics_tutor = relationship("Tutor", back_populates="students_physics", foreign_keys=[physics_tutor_username])
 
     def __repr__(self):
-        return ("Student name: {}, Student's password: {}, Student's Location:{}, Student's grade: {}, Biology: {}, Math: {}, Physics: {}".format(self.name, self.password, self.location, self.grade, self.biology_tutor, self.math_tutor, self.physics_tutor))
+        return ("Student name: {}, Student's password: {}, Student's Location:{}, Student's grade: {}, Phone number: {}, Biology: {}, Math: {}, Physics: {}".format(self.name, self.password, self.location, self.grade, self.phone_number, self.biology_tutor, self.math_tutor, self.physics_tutor))
 
 class Tutor(Base):
     __tablename__ = "Tutors"
