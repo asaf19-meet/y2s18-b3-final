@@ -115,7 +115,13 @@ def student_signup():
         location = request.form['location']
         grade = request.form['grade']
         phone_number = request.form['phone_number']
-        img = request.files['img']  
+        img = None
+        if 'img' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        else:
+            img = request.files['img'].read()  
+
         add_student(username,password,name,location,grade,phone_number, img)
         session['logged_in_student'] = True
         session["username"] = username
@@ -123,14 +129,7 @@ def student_signup():
 
    
         # check if the post request has the file part
-        if 'img' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        else:
-            img = request.files['img']
-            img.save(os.path.join(app.config['UPLOAD_FOLDER']))
-            return redirect(url_for('uploaded_file',
-                                    img=img))
+        
         return redirect(url_for('home'))
     
 
@@ -150,19 +149,16 @@ def tutor_signup():
         subject_string = ','.join(subject_list)
         experience = request.form['experience']
         degree = request.form['degree']
-        img = request.files['img'] 
-        authentication = request.files['authentication']     
-        add_tutor(username,password,name,location,subject,experience,degree, img, authentication)
-        session['logged_in_tutor'] = True
-        session["username"] = username
+        img, authentication = None, None
         if 'img' not in request.files:
             flash('No file part')
             return redirect(request.url)
         else:
-            img = request.files['img']
-            img.save(os.path.join(app.config['UPLOAD_FOLDER']))
-            return redirect(url_for('uploaded_file',
-                                    img=img))
+            img = request.files['img'].read()
+            authentication = request.files['authentication'].read() 
+        add_tutor(username,password,name,location,subject_string,experience,degree, img, authentication)
+        session['logged_in_tutor'] = True
+        session["username"] = username 
         return redirect(url_for('tutor_page'))
         
 # Running the Flask app
