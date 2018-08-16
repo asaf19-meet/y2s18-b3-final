@@ -1,6 +1,11 @@
 # Flask-related imports
 from flask import Flask, render_template, url_for, redirect, request, session, flash
 
+#Jenny stuff
+from keras.models import load_model
+from keras.preprocessing import image
+import numpy as np
+
 # Add functions you need from databases.py to the next line!
 from databases import *
 import os
@@ -155,11 +160,37 @@ def tutor_signup():
             return redirect(request.url)
         else:
             img = request.files['img'].read()
-            authentication = request.files['authentication'].read() 
-        add_tutor(username,password,name,location,subject_string,experience,degree, img, authentication)
-        session['logged_in_tutor'] = True
-        session["username"] = username 
-        return redirect(url_for('tutor_page'))
+            authentication = request.files['authentication']
+            print(authentication.filename)
+            test_image = image.load_img(authentication, target_size = (64, 64))
+            test_image = image.img_to_array(test_image)
+            test_image = np.expand_dims(test_image, axis = 0)
+            classifier = load_model('my_model.h5')
+            result = classifier.predict(test_image)
+            authen = None
+            if (result[0][0])>=0.5:
+                test_image = image.load_img('test_set/{}'.format(authentication), target_size = (64, 64))
+                test_image = image.img_to_array(test_image)
+                test_image = np.expand_dims(test_image, axis = 0)
+                result = classifier.predict(test_image)
+                print(prediction)
+                
+                prediction = 'Trueeeee'
+                authen = True
+                add_tutor(username,password,name,location,subject_string,experience,degree, img, authentication.read())
+                session['logged_in_tutor'] = True
+                session["username"] = username
+                return redirect(url_for('tutor_page'))
+
+            else:
+                prediction = 'False'
+                print (prediction)
+                add_tutor(username,password,name,location,subject_string,experience,degree, img, authentication.read())
+                session['logged_in_tutor'] = True
+                session["username"] = username
+                return redirect(url_for('tutor_page'))
+                           
+                
         
 # Running the Flask app
 if __name__ == "__main__":
