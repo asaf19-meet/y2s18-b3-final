@@ -44,7 +44,7 @@ class Tutor(Base):
 
 
     def __repr__(self):
-        return ("Tutor Name: {},Tutor's password: {}, Tutor's Location: {}, subjects: {}, experience: {}, degree: {}, img: {}, Math: {}, Biology: {}, Physics {}".format(self.name,self.password, self.location, self.subjects, self.experience, self.degree, self.img, self.students_math, self.students_biology, self.students_physics))
+        return ("Tutor Name: {},Tutor's password: {}, Tutor's Location: {}, subjects: {}, experience: {}, degree: {}, Math: {}, Biology: {}, Physics {}".format(self.name,self.password, self.location, self.subjects, self.experience, self.degree, self.students_math, self.students_biology, self.students_physics))
 
 # class Time(Base):
 #     __tablename__ = "Time"

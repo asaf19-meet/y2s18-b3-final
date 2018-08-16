@@ -152,6 +152,7 @@ def tutor_signup():
                         request.form['physics'] if 'physics' in request.form else '', 
                         request.form['math'] if 'math' in request.form else '']
         subject_string = ','.join(subject_list)
+        print(subject_string)
         experience = request.form['experience']
         degree = request.form['degree']
         img, authentication = None, None
@@ -173,7 +174,6 @@ def tutor_signup():
                 test_image = image.img_to_array(test_image)
                 test_image = np.expand_dims(test_image, axis = 0)
                 result = classifier.predict(test_image)
-                print(prediction)
                 
                 prediction = 'Trueeeee'
                 authen = True
@@ -185,10 +185,10 @@ def tutor_signup():
             else:
                 prediction = 'False'
                 print (prediction)
-                add_tutor(username,password,name,location,subject_string,experience,degree, img, authentication.read())
-                session['logged_in_tutor'] = True
-                session["username"] = username
-                return redirect(url_for('tutor_page'))
+                # add_tutor(username,password,name,location,subject_string,experience,degree, img, authentication.read())
+                # session['logged_in_tutor'] = True
+                # session["username"] = username
+                return redirect(url_for('home'))
                            
                 
         
