@@ -33,21 +33,19 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#services">Signup</a>
+                        <a class="nav-link js-scroll-trigger" href="#services"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                        <a class="nav-link js-scroll-trigger" href="#contact"></a>
                     </li>
                     <li class="nav-item">
                         <!-- <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button> -->
-                        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
-                            <div class="portfolio-hover">
-                                <div class="portfolio-hover-content">
-                                    <input class="btn btn-primary" type="submit" value="login" 
-                                    name="login" id="frm1_submit" />
-                                </div>
-                                </div>
-                                </a>
+                        <form action="/student/logout" method="POST"></form>
+                            
+                            <input class="btn btn-primary" type="submit" value="signout" 
+                            name="signout" id="frm1_submit"></button>
+                        
+                            </form>
                         <!-- <form action="/student/login" method="get">
                             <input class="btn btn-primary" type="submit" value="login" 
                                 name="login" id="frm1_submit" />
@@ -64,7 +62,7 @@
                   <div class="intro-text">
                     <div class="intro-lead-in">Welcome To The Subject Page!</div>
                     <div class="intro-heading text-uppercase"></div>
-                    <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Be Apart of the TNM community</a>
+                    <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Welcome Back {{student.name}}!</a>
                   </div>
                 </div>
               </header>
