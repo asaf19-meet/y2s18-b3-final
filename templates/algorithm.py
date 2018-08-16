@@ -33,11 +33,11 @@ target_size = (64, 64),
 batch_size = 32,
 class_mode = 'binary')
 classifier.fit_generator(training_set,
-steps_per_epoch = 2417,
-epochs = 25,
+steps_per_epoch = 147,
+epochs = 1,
 validation_data = test_set,
 validation_steps = 14)
-test_image = image.load_img('dataset/single_prediction/20180814232012_IMG_1289.JPG', target_size = (64, 64))
+test_image = image.load_img('test_set/20180814232012_IMG_1289.JPG', target_size = (64, 64))
 test_image = image.img_to_array(test_image)
 test_image = np.expand_dims(test_image, axis = 0)
 result = classifier.predict(test_image)
@@ -48,3 +48,4 @@ if result[0][0] == 1:
 else:
 	prediction = 'False'
 	print (prediction)
+model.save('my_model.h5')
