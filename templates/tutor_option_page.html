@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script type="text/javascript" src="{{ url_for('static', filename='jquery.js') }}"></script>
 	<title>TNM</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
@@ -125,8 +126,8 @@
 </div> -->
 
 {%for tutor in tutors%} 
-<div class="container">
-  <img src="/static/img/img_avatar3.png" alt="Avatar" class="image">
+<div class="container" id ="{{tutor.username}}" >
+  <img id='img_{{tutor.username}}' src="/static/img/img_avatar3.png" alt="Avatar" class="image">
   <div class="overlay">
     <div class="text">lives in {{tutor.location}}</div>
    <div class="overlay2">
@@ -135,6 +136,18 @@
   </div>
 </div>
 {%endfor%}
-
+<script type="text/javascript">
+{%for tutor in tutors%}
+	$("#{{tutor.username}}").on("click", function () {
+	var username_t = "{{tutor.username}}"
+    $.post( "/student/subjects_page/tutor_option/{{ subject }}", {
+    	requested_tutor: username_t ,
+	});
+	$("#img_{{tutor.username}}").attr('src', "/static/img/img_avatar_chosen.png");
+});
+{%endfor%}
+</script>
 </body>
 </html>
+
+

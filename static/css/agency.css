@@ -56,6 +56,7 @@ section h3.section-subheading {
 }
 
 .btn {
+  padding-top: 10px;
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
 }
@@ -66,6 +67,7 @@ section h3.section-subheading {
 }
 
 .btn-primary {
+  padding-top: 10px;
   background-color: #fed136;
   border-color: #fed136;
 }
@@ -798,5 +800,21 @@ span.psw {
 @keyframes animatezoom {
   from {transform: scale(0)} 
   to {transform: scale(1)}
+}
+
+.bg-img{
+  background-image: url('../img/subject_bg.png');
+  /*min-height: 100%;*/
+  height:580px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+
+.container3 {
+  padding: 16px;
 }
 
